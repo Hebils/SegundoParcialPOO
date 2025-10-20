@@ -10,7 +10,7 @@ package com.mycompany.segundoparcialpoo;
  */
 public class SegundoParcialPOO {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+    
+    
+    
 }
