@@ -59,7 +59,7 @@ public class SegundoParcialPOO {
                 
             case 3:
                 
-                
+                listarEstudiantes();
                 
                 break;
                 
@@ -141,6 +141,16 @@ public class SegundoParcialPOO {
         
     }
     
-    
+    public static void listarEstudiantes() {
+        if (listaEstudiantes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay estudiantes registrados");
+            return;
+        }
+        StringBuilder sb = new StringBuilder("--- Reporte de Estudiantes ---\n");
+            for (Estudiante estudiante : listaEstudiantes) {
+            sb.append(estudiante.toString()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, sb.toString());
+    }
     
 }
