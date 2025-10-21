@@ -16,6 +16,14 @@ public class Profesor {
     private double salario;
     private double prestaciones;
 
+    public Profesor(int cedula, String materia, int horas, double salario, double prestaciones) {
+        this.cedula = cedula;
+        this.materia = materia;
+        this.horas = horas;
+        this.salario = salario;
+        this.prestaciones = prestaciones;
+    }
+    
     public int getCedula() {
         return cedula;
     }
@@ -64,5 +72,10 @@ public class Profesor {
     
     public double calcularPrestacionesSociales() {
         return calcularPagoMensual() * 0.17;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + ", Cédula: " + cedula + ", Materia: " + materia + ", Salario Mensual: " + String.format("%.2f", calcularPagoMensual()) + ", Prestaciones Sociales: " + String.format("%.2f", calcularPrestacionesSociales());
     }
 }
