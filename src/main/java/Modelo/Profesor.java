@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author Angello
  */
-public class Profesor {
+public class Profesor extends Persona{
     
     private int cedula;
     private String materia;
@@ -16,7 +16,8 @@ public class Profesor {
     private double salario;
     private double prestaciones;
 
-    public Profesor(int cedula, String materia, int horas, double salario, double prestaciones) {
+    public Profesor(String nombre, int edad, int telefono, String direccion, String nacimiento, int cedula, String materia, int horas, double salario, double prestaciones) {
+        super(nombre, edad, telefono, direccion, nacimiento);
         this.cedula = cedula;
         this.materia = materia;
         this.horas = horas;

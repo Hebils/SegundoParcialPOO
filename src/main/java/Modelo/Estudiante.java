@@ -8,12 +8,13 @@ package Modelo;
  *
  * @author Angello
  */
-public class Estudiante {
+public class Estudiante extends Persona{
     
     private int codigo;
     private String grado;
 
-    public Estudiante(int codigo, String grado) {
+    public Estudiante(String nombre, int edad, int telefono, String direccion, String nacimiento, int codigo, String grado) {
+        super(nombre, edad, telefono, direccion, nacimiento);
         this.codigo = codigo;
         this.grado = grado;
     }
