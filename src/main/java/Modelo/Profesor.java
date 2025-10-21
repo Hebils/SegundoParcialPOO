@@ -67,6 +67,6 @@ public class Profesor extends Persona{
     
     @Override
     public String toString() {
-        return super.toString() + ", Cédula: " + cedula + ", Materia: " + materia + ", Salario Mensual: " + String.format("%.2f", calcularPagoMensual()) + ", Prestaciones Sociales: " + String.format("%.2f", calcularPrestacionesSociales());
+        return super.toString() + "\nCédula: " + cedula + "\nMateria: " + materia + "\nSalario Mensual: " + String.format("%.2f", calcularPagoMensual()) + "\nPrestaciones Sociales: " + String.format("%.2f", calcularPrestacionesSociales());
     }
 }

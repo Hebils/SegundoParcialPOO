@@ -8,6 +8,8 @@ import Modelo.Estudiante;
 import Modelo.Persona;
 import Modelo.Profesor;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -29,7 +31,7 @@ public class SegundoParcialPOO {
         opcion = Integer.parseInt(JOptionPane.showInputDialog(
         "Menu \n" +
                 
-        "1. Agregar persona \n" +
+        "1. Agregar estudiante \n" +
                 
         "2. Agregar profesor \n" +
                 
@@ -65,7 +67,7 @@ public class SegundoParcialPOO {
                 
             case 4:
                 
-                
+                listarProfesores();
                 
                 break;
                 
@@ -115,7 +117,7 @@ public class SegundoParcialPOO {
     
     public static void agregarProfesor(){
         
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Edad del estudiante:"));
+        int edad = Integer.parseInt(JOptionPane.showInputDialog("Edad del profesor:"));
         
         if(edad < 18){
             
@@ -149,6 +151,23 @@ public class SegundoParcialPOO {
         StringBuilder sb = new StringBuilder("--- Reporte de Estudiantes ---\n");
             for (Estudiante estudiante : listaEstudiantes) {
             sb.append(estudiante.toString()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, sb.toString());
+    }
+    
+    public static void listarProfesores() {
+        if (listaProfesores.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay profesores registrados.");
+            return;
+        }
+        // Ordenar profesores por salario mensual de menor a mayor
+        Collections.sort(listaProfesores, Comparator.comparingDouble(Profesor::calcularPagoMensual));
+
+        StringBuilder sb = new StringBuilder("--- Reporte de Profesores (ordenado por salario mensual) ---\n");
+        for (Profesor profesor : listaProfesores) {
+            sb.append(profesor.toString())
+              .append("\n------------------------------------")
+              .append("\n");
         }
         JOptionPane.showMessageDialog(null, sb.toString());
     }

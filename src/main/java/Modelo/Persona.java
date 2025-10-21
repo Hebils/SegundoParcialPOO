@@ -66,7 +66,7 @@ public class Persona {
     
     @Override
     public String toString() {
-        return "Nombre: " + nombre + ", Edad: " + edad + ", Teléfono: " + telefono + ", Dirección: " + direccion + ", Fecha de Nacimiento: " + nacimiento;
+        return "Nombre: " + nombre + "\nEdad: " + edad + "\nTeléfono: " + telefono + "\nDirección: " + direccion + "\nFecha de Nacimiento: " + nacimiento;
     }
     
 }
