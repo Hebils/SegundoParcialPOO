@@ -8,8 +8,8 @@ import Modelo.Estudiante;
 import Modelo.Persona;
 import Modelo.Profesor;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+//import java.util.Collections;
+//import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -29,7 +29,7 @@ public class SegundoParcialPOO {
         do{
         
         opcion = Integer.parseInt(JOptionPane.showInputDialog(
-        "Menu \n" +
+        "Menú \n" +
                 
         "1. Agregar estudiante \n" +
                 
@@ -73,13 +73,13 @@ public class SegundoParcialPOO {
                 
             case 5:
                 
-                JOptionPane.showMessageDialog(null,"Saliendo del sistema");
+                JOptionPane.showMessageDialog(null, "Saliendo del sistema");
                 
                 break;
                 
             default:
                 
-                JOptionPane.showMessageDialog(null, "Opcion invalida");
+                JOptionPane.showMessageDialog(null, "Opción invalida");
                 
                 break;
             
@@ -103,14 +103,14 @@ public class SegundoParcialPOO {
             String nombre = JOptionPane.showInputDialog("Nombre del estudiante:");
             int telefono = Integer.parseInt(JOptionPane.showInputDialog("Teléfono del estudiante:"));
             String direccion = JOptionPane.showInputDialog("Dirección del estudiante:");
-            String nacimiento = JOptionPane.showInputDialog("Fecha de nacimiento del estudiante (YYYY-MM-DD):");
+            String nacimiento = JOptionPane.showInputDialog("Fecha de nacimiento del estudiante (MM-DD-YYYY):");
             int codigo = Integer.parseInt(JOptionPane.showInputDialog("Código del estudiante:"));
             String grado = JOptionPane.showInputDialog("Grado del estudiante:");
         
             Estudiante nuevoEstudiante = new Estudiante(nombre, edad, telefono, direccion, nacimiento, codigo, grado);
             listaEstudiantes.add(nuevoEstudiante);
             listaPersonas.add(nuevoEstudiante);
-            JOptionPane.showMessageDialog(null, "Estudiante registrado exitosamente.\n" + nuevoEstudiante.toString());
+            JOptionPane.showMessageDialog(null, "Estudiante registrado exitosamente\n" + nuevoEstudiante.toString());
         }
         
     }
@@ -138,7 +138,7 @@ public class SegundoParcialPOO {
             Profesor nuevoProfesor = new Profesor(nombre, edad, telefono, direccion, nacimiento, cedula, materia, horas, salario);
             listaProfesores.add(nuevoProfesor);
             listaPersonas.add(nuevoProfesor);
-            JOptionPane.showMessageDialog(null, "Profesor registrado exitosamente.\n" + nuevoProfesor.toString());
+            JOptionPane.showMessageDialog(null, "Profesor registrado exitosamente\n" + nuevoProfesor.toString());
         }
         
     }
@@ -155,14 +155,28 @@ public class SegundoParcialPOO {
         JOptionPane.showMessageDialog(null, sb.toString());
     }
     
+    public static void ordenarPorSalario() {
+        for (int i = 0; i < listaProfesores.size() - 1; i++) {
+            for (int j = 0; j < listaProfesores.size() - i - 1; j++) {
+                double salario1 = listaProfesores.get(j).calcularPagoMensual();
+                double salario2 = listaProfesores.get(j + 1).calcularPagoMensual();
+                if (salario1 > salario2) {
+                    Profesor temp = listaProfesores.get(j);
+                    listaProfesores.set(j, listaProfesores.get(j + 1));
+                    listaProfesores.set(j + 1, temp);
+                }
+            }
+        }
+    }
+    
     public static void listarProfesores() {
         if (listaProfesores.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay profesores registrados.");
+            JOptionPane.showMessageDialog(null, "No hay profesores registrados");
             return;
         }
         // Ordenar profesores por salario mensual de menor a mayor
-        Collections.sort(listaProfesores, Comparator.comparingDouble(Profesor::calcularPagoMensual));
-
+        //Collections.sort(listaProfesores, Comparator.comparingDouble(Profesor::calcularPagoMensual));
+        ordenarPorSalario();
         StringBuilder sb = new StringBuilder("--- Reporte de Profesores (ordenado por salario mensual) ---\n");
         for (Profesor profesor : listaProfesores) {
             sb.append(profesor.toString())
